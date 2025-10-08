@@ -38,3 +38,5 @@ build/
 
 # WinMerge
 *.bak
+
+/app/logs/

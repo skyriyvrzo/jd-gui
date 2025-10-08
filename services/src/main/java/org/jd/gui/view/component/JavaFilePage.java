@@ -7,6 +7,11 @@
 
 package org.jd.gui.view.component;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.RuleContext;
@@ -20,11 +25,6 @@ import org.jd.gui.util.io.TextReader;
 import org.jd.gui.util.parser.antlr.ANTLRJavaParser;
 import org.jd.gui.util.parser.antlr.AbstractJavaListener;
 import org.jd.gui.util.parser.antlr.JavaParser;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class JavaFilePage extends TypePage {
 
