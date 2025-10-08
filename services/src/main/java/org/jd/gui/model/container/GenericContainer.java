@@ -7,21 +7,26 @@
 
 package org.jd.gui.model.container;
 
-import org.jd.gui.api.API;
-import org.jd.gui.api.model.Container;
-import org.jd.gui.spi.ContainerFactory;
-import org.jd.gui.util.exception.ExceptionUtil;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.file.*;
+import java.nio.file.DirectoryStream;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+
+import org.jd.gui.api.API;
+import org.jd.gui.api.model.Container;
+import org.jd.gui.spi.ContainerFactory;
+import org.jd.gui.util.exception.ExceptionUtil;
 
 public class GenericContainer implements Container {
     protected static final long TIMESTAMP = System.currentTimeMillis();
@@ -170,7 +175,7 @@ public class GenericContainer implements Container {
             tmpFile.deleteOnExit();
             Files.copy(fsPath, tmpPath);
 
-            FileSystem subFileSystem = FileSystems.newFileSystem(tmpPath, null);
+            FileSystem subFileSystem = FileSystems.newFileSystem(tmpPath, (ClassLoader) null);
 
             if (subFileSystem != null) {
                 Iterator<Path> rootDirectories = subFileSystem.getRootDirectories().iterator();
