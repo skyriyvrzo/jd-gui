@@ -7,11 +7,10 @@
 
 package org.jd.gui.view;
 
-import org.jd.gui.util.exception.ExceptionUtil;
-import org.jd.gui.util.swing.SwingUtil;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -20,6 +19,24 @@ import java.net.URL;
 import java.util.Enumeration;
 import java.util.jar.Attributes;
 import java.util.jar.Manifest;
+
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRootPane;
+import javax.swing.KeyStroke;
+import javax.swing.UIManager;
+
+import org.jd.gui.util.exception.ExceptionUtil;
+import org.jd.gui.util.swing.SwingUtil;
 
 public class AboutView {
     protected JDialog aboutDialog;
@@ -97,7 +114,12 @@ public class AboutView {
             hbox.add(Box.createHorizontalGlue());
 
             hbox = Box.createHorizontalBox();
-            hbox.add(new JLabel("Copyright © 2008, 2019 Emmanuel Dupuy"));
+            hbox.add(new JLabel(
+            	    "<html><div style='text-align:center;'>"
+            	  + "Copyright © 2008, 2019 Emmanuel Dupuy<br>"
+            	  + "Updated & maintained © 2025 CuddleCloud Network"
+            	  + "</div></html>"
+            	));
             hbox.add(Box.createHorizontalGlue());
             subvbox.add(hbox);
 
