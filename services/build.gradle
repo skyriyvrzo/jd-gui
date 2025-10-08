@@ -23,12 +23,20 @@ tasks.named('generateGrammarSource') {
     maxHeapSize = '64m'
     outputDirectory = file('src-generated/antlr/java')
     arguments += ['-visitor', '-package', 'org.jd.gui.util.parser.antlr']
+    
+    onlyIf {
+        gradle.startParameter.taskNames.any { t ->
+        	t.contains(project.path) || t.contains(project.name)
+    	}
+    }
 }
 
 sourceSets.main.java.srcDirs += file('src-generated/antlr/java')
+
 tasks.named('compileJava') {
     dependsOn tasks.named('generateGrammarSource')
 }
+
 tasks.named('clean') {
     delete 'src-generated'
 }

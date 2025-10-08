@@ -100,7 +100,7 @@ tasks.named('jar') {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
-// ⚙️ Replace old ProGuard Gradle task with a modern wrapper
+// Replace old ProGuard Gradle task with a modern wrapper
 tasks.register('proguard', Exec) {
     dependsOn(tasks.named('jar'))
     def jarFile = tasks.named('jar').flatMap { it.archiveFile }.get().asFile
@@ -111,7 +111,7 @@ tasks.register('proguard', Exec) {
             '-outjars', "build/libs/${project.name}-${project.version}-min.jar"
 }
 
-// 🪟 Windows executable wrapper
+// Windows executable wrapper
 afterEvaluate {
     def proguardOut = file("build/libs/${project.name}-${project.version}-min.jar")
 
@@ -205,4 +205,9 @@ distributions {
 
 tasks.build {
     finalizedBy 'buildDeb', 'buildRpm'
+}
+
+// Disable proguard
+tasks.named('proguard') {
+    enabled = false
 }
